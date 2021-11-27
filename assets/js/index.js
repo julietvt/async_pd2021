@@ -1,6 +1,7 @@
 // Асинхронный код выполняется только после синхронного!!!
 // status 200 *, 404-not found
 
+/*
 'use strict';
 
 const store = {
@@ -33,8 +34,33 @@ request.onloadend = function () {
   }
 };
 
+*/
+
+fetch('../../assets/data/users.json')
+  .then(loadUsersResolve)
+  .then(logData)
+  .catch(loadUsersReject);
+
+function loadUsersResolve(response) {
+  return response.json();
+}
+
+function logData(data) {
+  console.log(data);
+}
+
+function loadUsersReject(response) {
+  console.log(response);
+}
+
 /*
-request.onloadend = function () {
-  console.log(this);
-};
+function loadUsersResolve(response) {
+  console.log(response);
+  const loadUsers = response.json();
+  console.log(loadUsers);
+}
+
+function loadUsersReject(response) {
+  console.log(response);
+}
 */
