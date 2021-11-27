@@ -1,43 +1,40 @@
-/*
-const spinner = document.getElementById('spinner');
-let d = 0;
+// Асинхронный код выполняется только после синхронного!!!
+// status 200 *, 404-not found
 
-setInterval(rotateSpinner, 1000 / 60);
+'use strict';
 
-function rotateSpinner() {
-  spinner.style.transform = `rotate(${++d}deg)`;
-}
+const store = {
+  users: null,
+  isFetching: false,
+  error: null,
+};
 
-const btn = document.getElementById('hello');
+const request = new XMLHttpRequest();
+
+const btn = document.getElementById('loadUsers');
+
 btn.onclick = function () {
-  //console.log('Hello');
-  alert('Hello');
+  // false - синхронно, true - ассинхронно
+  request.open('GET', '../../assets/data/users.json', true);
+  request.send();
 };
-*/
 
-// setTimeout, setInterval
+request.onloadstart = function () {
+  store.isFetching = true;
+  //console.log(store);
+};
 
-//1
+request.onloadend = function () {
+  store.isFetching = false;
+  if (this.status >= 200 && this.status < 300) {
+    store.users = JSON.parse(this.responseText);
+  } else {
+    store.error = new Error(`${this.status} ${this.statusText}`);
+  }
+};
+
 /*
-setTimeout(() => {
-  console.log('Hello');
-}, 2 * 1000);
-*/
-
-//2
-/*
-const fun = (who) => {
-  console.log('Hello, ' + who + ' !!!');
+request.onloadend = function () {
+  console.log(this);
 };
-
-setTimeout(fun, 3 * 1000, 'Vasya');
-setTimeout(fun, 4 * 1000, 'Tom');
-setTimeout(fun, 1 * 1000, 'Masha');
 */
-
-const fun2 = () => {
-  console.log('Hello');
-};
-
-const id = setTimeout(fun2, 0);
-//clearInterval(id);
