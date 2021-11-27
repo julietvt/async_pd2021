@@ -36,6 +36,7 @@ request.onloadend = function () {
 
 */
 
+/*
 fetch('../../assets/data/users.json')
   .then(loadUsersResolve)
   .then(logData)
@@ -64,3 +65,30 @@ function loadUsersReject(response) {
   console.log(response);
 }
 */
+
+// Promise
+
+//1
+
+const promise1 = new Promise(fun1);
+
+function fun1(resolve, reject) {
+  console.log("I'm running");
+}
+
+// 2
+
+const promise2 = new Promise(function (resolve, reject) {
+  console.log("I'm running");
+});
+
+// Получить число меньше 5. Создать обещание
+
+let promiseGetNumberLessThan5 = new Promise(funFor5);
+
+function funFor5(resolve, reject) {
+  let number = Math.random() * 10;
+  console.log('number=', number);
+  if (number < 5) resolve(number);
+  else reject(new Error('Reject. Number is ' + number));
+}
