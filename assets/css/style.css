@@ -1,47 +1,31 @@
-/*
-#usersList {
-  margin: 0 auto;
-  background-color: grey;
-}
-
-.userItem {
+.btnContainer {
   display: flex;
-  border: 1px solid black;
+  justify-content: center;
 }
 
-.imgContainer {
-  position: relative;
-  overflow: hidden;
+.btnContainer > button {
+  margin: 20px;
+}
+
+.list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.item {
+  border: 1px solid blue;
   width: 200px;
-  height: 200px;
+  text-align: center;
+  margin: 10px;
 }
 
-.userImg {
-  position: absolute;
+.item > img {
+  border-radius: 50%;
   object-fit: cover;
-  height: inherit;
-  width: inherit;
 }
 
 .userFullName {
-  color: white;
   font-size: 20px;
-  font-weight: 600;
-}
-*/
-
-.container {
-  display: flex;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-  max-width: 1200px;
-  max-height: 100vh;
-}
-
-#square {
-  width: 200px;
-  height: 200px;
-  background-color: red;
-  border-radius: 10px;
+  margin: 10px;
 }
