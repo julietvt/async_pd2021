@@ -145,6 +145,7 @@ setTimeout(function funTime() {
 2. создать асинхронную функцию для их console.log
 */
 
+/*
 const promise1 = Promise.resolve(100);
 const promise2 = Promise.resolve(true);
 const promise3 = Promise.resolve('Hello, Vasya!');
@@ -152,15 +153,65 @@ const promise4 = Promise.resolve(Symbol('SOME_ACTION'));
 const promise5 = Promise.resolve(null);
 const promise6 = Promise.resolve(undefined);
 const promise7 = Promise.resolve({ id: 1, name: 'Vasya', age: 20 });
-
+*/
 /*
 console.log(promise1);
 promise1.then((result) => {
   console.log('Result is', result);
 });
 */
+/*
 console.log(promise7);
 
 promise7.then((data) => {
   console.log('Result is', data);
 });
+
+console.log('----------------');
+async function promiseResolveValue(value) {
+  console.log('Value', await value);
+}
+
+promiseResolveValue(promise1);
+promiseResolveValue(promise7);
+*/
+
+// создать обещание на создание обьекта пользователь/машина/тел если булевая константа true
+
+let isAuth = true;
+
+let authUserFunction = new Promise(function (resolve, reject) {
+  if (isAuth) {
+    let newCreditCard = {
+      number: '1111000022223333',
+      data: '12/23',
+    };
+    resolve(newCreditCard);
+  } else {
+    reject(new Error('Problem with your auth'));
+  }
+});
+
+function getCard() {
+  authUserFunction
+    .then((result) => {
+      console.log('Result is', result);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+getCard();
+
+// асинхронно если хотим вызвать
+
+async function getCard2() {
+  try {
+    let newUserCreditCard = await authUserFunction;
+  } catch (error) {
+    close.log(error);
+  }
+}
+
+getCard2();
