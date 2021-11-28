@@ -87,6 +87,7 @@ function funDelay(timeMS) {
 funDelay(1 * 1000).then(() => alert('Hello'));
 */
 
+/*
 function funDelay2(timeMS) {
   if (!Number.isNaN(timeMS)) {
     return new Promise((resolve, reject) => {
@@ -108,3 +109,32 @@ funDelay2(NaN)
   .catch((error) => {
     console.log(error);
   });
+*/
+
+/*
+Напишите функцию, которая последовательно выводит в консоль числа от 1 до 20,
+ с интервалом между числами 100мс. То есть, весь вывод должен занимать 2000мс,
+ в течение которых каждые 100мс в консоли появляется очередное число.
+ Решение задачи должно использовать setTimeout. (По циклу таймеры не создавать)
+ */
+
+//1 bad
+for (let i = 1; i <= 20; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 100);
+}
+//2 !!!!
+let start = 1,
+  end = 20;
+const timerId = setInterval(() => {
+  start <= end ? console.log(start++) : clearInterval(timerId);
+}, 100);
+//3
+let i = 1;
+setTimeout(function funTime() {
+  console.log(i++);
+  if (i < 21) {
+    setTimeout(funTime, 100);
+  }
+}, 100);
