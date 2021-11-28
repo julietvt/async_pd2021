@@ -118,6 +118,7 @@ funDelay2(NaN)
  Решение задачи должно использовать setTimeout. (По циклу таймеры не создавать)
  */
 
+/*
 //1 bad
 for (let i = 1; i <= 20; i++) {
   setTimeout(() => {
@@ -138,3 +139,28 @@ setTimeout(function funTime() {
     setTimeout(funTime, 100);
   }
 }, 100);
+*/
+/*
+1. Создать promise для каждого типа (number, boolean, string, symbol, null, undefined, object )
+2. создать асинхронную функцию для их console.log
+*/
+
+const promise1 = Promise.resolve(100);
+const promise2 = Promise.resolve(true);
+const promise3 = Promise.resolve('Hello, Vasya!');
+const promise4 = Promise.resolve(Symbol('SOME_ACTION'));
+const promise5 = Promise.resolve(null);
+const promise6 = Promise.resolve(undefined);
+const promise7 = Promise.resolve({ id: 1, name: 'Vasya', age: 20 });
+
+/*
+console.log(promise1);
+promise1.then((result) => {
+  console.log('Result is', result);
+});
+*/
+console.log(promise7);
+
+promise7.then((data) => {
+  console.log('Result is', data);
+});
