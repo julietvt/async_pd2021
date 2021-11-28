@@ -2,7 +2,7 @@
 
 const options = {
   results: 10,
-  seed: 'abc',
+  //seed: 'abc',
   page: 1,
 };
 
@@ -23,9 +23,7 @@ function btnNextFun(e) {
 }
 
 function load({ results, seed, page }) {
-  fetch(
-    `https://randomuser.me/api/?results=${results}&seed=${seed}&page=${page}`
-  )
+  fetch(`https://randomuser.me/api/?results=${results}&page=${page}`)
     .then((response) => response.json())
     .then(({ results }) => loadUsersOnPage(results));
 }
@@ -48,6 +46,7 @@ function loadUsersOnPage(users) {
   });
 }
 
+/*
 function createUserCard({
   name: { first: name, last: surname },
   picture: { medium: img },
@@ -62,6 +61,23 @@ function createUserCard({
   item.append(userImg);
   const userFullName = document.createElement('p');
   userFullName.innerText = `${name} ${surname}`;
+  userFullName.classList.add('userFullName');
+  item.append(userFullName);
+  return item;
+}
+*/
+
+function createUserCard(u) {
+  const item = document.createElement('li');
+  item.classList.add('item');
+  const userImg = new Image();
+  //const userImg = document.createElement('img');
+  userImg.setAttribute('src', u.picture.medium);
+  userImg.setAttribute('alt', 'user photo');
+  userImg.classList.add('userImg');
+  item.append(userImg);
+  const userFullName = document.createElement('p');
+  userFullName.innerText = `${u.name.first} ${u.name.first}`;
   userFullName.classList.add('userFullName');
   item.append(userFullName);
   return item;
