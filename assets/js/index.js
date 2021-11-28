@@ -176,6 +176,7 @@ promiseResolveValue(promise1);
 promiseResolveValue(promise7);
 */
 
+/*
 // создать обещание на создание обьекта пользователь/машина/тел если булевая константа true
 
 let isAuth = true;
@@ -215,3 +216,57 @@ async function getCard2() {
 }
 
 getCard2();
+*/
+
+// задача. динамически менять цвет фигуры
+
+const square = document.getElementById('square');
+
+// figura.style.backgroudColor
+
+//1
+/*
+function changeColorFun1(figure) {
+  //setInterval(() => (figure.style.backgroundColor = 'black'), 2000);
+  setTimeout(() => (figure.style.backgroundColor = 'black'), 2000);
+}
+
+changeColorFun1(square);
+*/
+
+/*
+//2
+
+function changeColorFun2() {
+  if (square.style.backgroundColor == 'red') {
+    square.style.backgroundColor = 'black';
+  } else {
+    square.style.backgroundColor = 'red';
+  }
+}
+
+setInterval(changeColorFun2, 2000);
+
+//3
+
+const container = document.getElementById('container')
+
+const color = ['green','blue','red','blue','green']
+let count = 0
+
+
+
+setInterval(function changeColor(){
+    container.style.backgroundColor = ${color[count++]}
+    console.log(count)
+},1000)
+*/
+
+//4
+
+let i = 0;
+function changeColor() {
+  square.style.backgroundColor = `rgb(${i++ % 256},0,0)`;
+}
+
+setInterval(changeColor, 10);
